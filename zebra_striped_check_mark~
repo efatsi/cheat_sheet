@@ -1,6 +1,0 @@
-<table class="table table-striped">
-
-
-		  	<% if family.active %>
-		  		<%= image_tag('icons/check_green.gif') %>
-		  	<% end %>
