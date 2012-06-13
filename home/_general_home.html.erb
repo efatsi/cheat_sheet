@@ -1,0 +1,28 @@
+<h1></h1>
+<% if 1 != 0 %>
+	<div class="span6">
+	<h1>HOME</h1></br>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+				  <th>Name</th>
+					<th>Address</th>
+					<th>Phone</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% 3.times do |time| %>
+				  <tr>
+				    <td><%= "Name" %></td>
+				    <td><%= "Address" %></td>
+				    <td><%= "Phone" %></td>
+				  </tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+
+	</br>
+<% else %>
+	<h2>There are no OBJECTS in the system %></h2></br>
+<% end %>

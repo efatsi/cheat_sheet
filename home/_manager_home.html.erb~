@@ -1,0 +1,104 @@
+<h1></h1>
+<div class="span8">
+	<h1><%= "Welcome, " + current_employee.first_name %></h1>
+	</br>
+	<%= form_tag employees_path, :method => 'get' do %>
+		<p>
+			<%= text_field_tag :search, params[:search] %>
+			<%= submit_tag "Search Employees", :name => nil %>
+		</p>
+	<% end %>
+</div>
+
+<div class="span5">
+	<div class="well">
+		<h1>Todays Shifts</h1>
+		<% if @todays_shifts.length != 0 %>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Employee</th>
+						<th>Time</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @todays_shifts.each do |shift| %>
+						<tr>
+						  <td><%= link_to shift.show_employee, employee_path(shift.get_employee) %></td>
+						  <td><%= shift.show_time %></td>
+						  <td><%= link_to 'Edit/Complete', edit_shift_path(shift), :class => 'btn btn-mini' %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		<% else %>
+			<h3><br /><%= "There are no Shifts for #{current_employee.show_store} today" %></h3></br>
+		<% end %>
+	</div>
+</div>
+<div class="span5">
+	<div class="well">
+		<h1>Incompleted Shifts</h2>
+		<% if @incompleted_shifts.length != 0 %>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Name</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @incompleted_shifts.each do |shift| %>
+						<tr>
+						  <td><%= shift.show_date %></td>
+						  <td><%= link_to shift.show_employee, employee_path(shift.get_employee) %></td>
+						  <td>
+						  	<%= link_to 'Edit/Complete', edit_shift_path(shift), :class => 'btn btn-mini' %>
+						  	<%= link_to 'Delete', shift_path(shift), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+						  </td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		<% else %>
+			<h3></br>None</h3></br>
+		<% end %>
+	</div>
+</div>
+
+<div class="span10">
+	<div class="well">
+		<h1><%= "Employees at " + current_employee.show_store %> </h2>
+		<% if @employees.length != 0 %>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Phone</th>
+						<th>Hours Worked (past 2 weeks)</th>
+						<th>Date of Last Shift</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @employees.each do |employee| %>
+						<tr>
+						  <td><%= link_to employee.name, employee_path(employee)  %></td>
+						  <td><%= employee.show_phone %></td>
+						  <td><%= employee.hours_worked %></td>
+						  <td><%= employee.show_last_shift %></td>
+						  <td>
+						  	<%= link_to 'New Shift', new_shift_path(:employee => employee), :class => 'btn btn-mini' %>
+						  </td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+			<%= will_paginate @employees %>
+		<% else %>
+			<h3>No Employees work at this store</h3>
+		<% end %>
+	</div>
+</div>

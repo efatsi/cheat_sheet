@@ -1,0 +1,16 @@
+<!-- NOTE THAT WE ARE USING BOTH SIMPLE_FORM AND NESTED_FORM (simple_nested_form_for) -->
+<!-- If you are not using both, adjust the simple_nested_form_for call accordingly -->
+
+<%= simple_form_for @family, :html => { :class => 'form-horizontal' } do |f| %>
+	<fieldset>
+		<legend><%= controller.action_name.capitalize %> Family</legend>
+
+		<%= f.input :name, :label => "First Name" %>
+		<%= f.input :active %>
+		
+		<div class="form-actions">
+			<%= f.submit nil, :class => 'btn btn-primary' %>
+			<%= link_to 'Cancel', families_path, :class => 'btn' %>
+		</div>
+	</fieldset>
+<% end %>

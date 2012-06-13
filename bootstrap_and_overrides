@@ -1,0 +1,42 @@
+@import "twitter/bootstrap/bootstrap";
+
+body {
+	padding-top: 60px; 
+	font-size: 12px;
+	select.date { width: 90px; }
+	select.time { width: 90px; }
+	input.text { width: 90px; }
+} 
+
+
+.btn-login {
+	float:right;
+}
+
+
+
+.btn-center {
+	width:106px;
+}
+
+.well{
+	background-color: #EEEEEE
+}
+
+
+@import "twitter/bootstrap/responsive";
+
+// Set the correct sprite paths
+@iconSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings.png');
+@iconWhiteSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings-white.png');
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/less.html for their names and documentation
+//
+// Example:
+// @linkColor: #ff0000;

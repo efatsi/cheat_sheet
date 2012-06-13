@@ -1,0 +1,25 @@
+<!-- NOTE THAT WE ARE USING BOTH SIMPLE_FORM AND NESTED_FORM (simple_nested_form_for) -->
+<!-- If you are not using both, adjust the simple_nested_form_for call accordingly -->
+
+<%= simple_nested_form_for @family, :html => { :class => 'form-horizontal' } do |family_form| %>
+<div class="row">
+
+	<div class="span5">
+		<%= render :partial => 'family_fields', :locals => { :f => family_form } %>
+	</div>
+	
+	<div class="span5">
+		<legend>Assign this Employee to a Store</legend>
+		<div id="family_children">
+			<%= family_form.simple_fields_for :children do |child_form| %>
+				<%= render :partial => 'child_fields', :locals => { :f => child_form } %>
+			<% end %> 
+			<p>
+				<br />
+				<%= family_form.link_to_add(raw("<i class='icon-plus icon-white'></i> Add Child"), :children, :class => 'btn btn-mini btn-primary') %>
+			</p>			
+		</div> 
+	</div>
+	
+</div>
+<% end %>

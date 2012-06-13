@@ -1,0 +1,66 @@
+# .bashrc information
+export PS1="\[\033[0;31m\]\W >\[\033[00m\] "
+export PS1="\[\033[01;34m\]current directory is \W >\[\033[00m\] "
+
+# Rake
+alias rdd='rake db:drop'
+alias rdm='rake db:migrate'
+alias rdp='rake db:populate'
+alias rtu='rake test:units'
+alias rr='rake routes'
+
+# Rails
+alias rs='rails server'
+alias rg='rails generate'
+alias rd='rails destroy'
+alias rgs='rails generate scaffold'
+alias rds='rails destroy scaffold'
+alias rgm='rails generate model'
+alias rdm='rails destroy model'
+alias rc='rails console'
+
+# Git
+alias ga='git add .'
+alias gl='git log'
+alias gb='git branch'
+alias gr='git rm'
+alias gs='git status'
+alias gc='git commit -m '
+alias gpom='git push -u origin master'
+
+# Terminal
+alias axe='rm -rf'
+alias ..='cd ..'
+alias cd..='cd ..'
+
+# Shortcuts
+alias cream='cd Desktop/Ubuntu_School/67-272/Creamery/esf_creamery'
+alias rent='cd Desktop/Ubuntu_School/Rent/Rentenator'
+
+Vim Shortcuts
+:%s/find/replace_with
+G - go to end of file
+dgg - delete to top of file
+
+
+Rails Stuff
+gem 'therubyracer'
+add foreign keys yourself when generating scaffolds/models
+rake test:units
+
+git Stuff
+Submit to darkknight/any git project   ----    git push -u origin master
+# restoring a deleted $file
+git checkout $(git rev-list -n 1 HEAD -- "$file")^ -- "$file"
+git reset --hard 0d1d7fc32
+
+
+Ruby Stuff
+employees.sort{ |a,b| a.last_name <=> b.last_name }
+
+Gedit Stuff
+ctrl-d deletes a whole line
+
+Terminal Stuff
+sudo apt-get autoremove --purge skype
+

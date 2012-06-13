@@ -1,0 +1,9 @@
+<div class="fields">
+	<div class="min_attraction">
+		<%= f.link_to_remove(raw("<i class='icon-remove'></i>")) %>
+		
+		<%= f.input :name %>
+		<%= f.input :street %>
+		
+	</div>
+</div>

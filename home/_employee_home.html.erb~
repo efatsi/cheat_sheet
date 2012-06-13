@@ -1,0 +1,85 @@
+<h1></h1>
+<div class="span3">
+	<div class="well">
+		<h3><%= "Welcome, "+ current_employee.proper_name %></h3></br></br>
+		<b><%= "Email: "%></b><%= current_employee.email %></br></br>
+		<b><%= "Phone: "%></b><%= current_employee.show_phone %></br></br>
+		<b><%= link_to "Edit Information", edit_employee_path(current_employee), :class => 'btn btn-center'  %></b>
+	</div>
+	
+	<div class="well">
+		<h3><%= "Current Assignment" %></h3></br></br>
+		<% if current_employee.get_store.nil? %>
+			<b><%= "No current assignment" %></b>	
+		<% else %>
+			<b><%= "Store: "%></b><%= current_employee.show_store %></br></br>
+			<b><%= "Phone: "%></b><%= current_employee.get_store.show_phone %></br></br>
+			<b><%= "Address: "%></b><%= current_employee.get_store.show_address %>
+		<% end %>
+	</div>
+</div>
+
+<div class="span7">
+	<div class="well">
+		<h1>Upcoming Shifts</h2></br>
+			<% if @upcoming_shifts.length != 0 %>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Store</th>
+							<th>Date</th>
+							<th>Time</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @upcoming_shifts.each do |shift| %>
+							<tr>
+								<td><%= shift.show_store %></td>
+								<td><%= shift.show_date %></td>
+								<td><%= shift.show_time %></td>
+								<td><%= link_to 'Details', shift_path(shift), :class => 'btn btn-mini' %></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			<% else %>
+				</br></br><h3>No upcoming shifts in the next 2 weeks</h3></br>
+			<% end %>
+	</div>
+</div>
+
+<div class="span3">
+
+</div>
+
+<div class="span7">
+	<div class="well">
+		<h1>Completed Shifts</h2></br>
+			<% if @completed_shifts.length != 0 %>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Store</th>
+							<th>Date</th>
+							<th>Time</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @completed_shifts.each do |shift| %>
+							<tr>
+								<td><%= shift.show_store %></td>
+								<td><%= shift.show_date %></td>
+								<td><%= shift.show_time %></td>
+								<td><%= link_to 'Details', shift_path(shift), :class => 'btn btn-mini' %></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			<% else %>
+				</br></br><h3>You have not completed any shifts yet</h3></br>
+			<% end %>
+	</div>
+</div>
+	

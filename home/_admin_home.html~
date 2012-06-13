@@ -1,0 +1,76 @@
+<div class="span2">
+	
+	<div class="well">
+		<h3>Quick Links:</h3> 
+		</br>
+			<%= link_to "New Object" :class => 'btn btn-center'  %></br></br>
+	</div>
+</div>
+
+<div class="span8">
+	<div class="well">		
+		<h1><%= "Welcome, All Mighty " + current_employee.first_name %></h1></br></br>
+		<%= form_tag employees_path, :method => 'get' do %>
+			<p>
+				<%= text_field_tag :search, params[:search] %>
+				<%= submit_tag "Search Employees", :name => nil %>
+			</p>
+		<% end %>
+	</div>
+	<div class="well">	
+		<h1>Stores</h1>
+		<% if @stores.length != 0 %>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Phone</th>
+						<th>Employees</th>
+						<th>Shift-Hours (past 2 weeks)</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @stores.each do |store| %>
+						<tr>
+						  <td><%= link_to store.name, store_path(store) %></td>
+						  <td><%= store.show_phone %></td>
+						  <td><%= store.current_employees.length %></td>
+						  <td><%= store.get_shifts %></td>
+						  <td><%= link_to 'New Assignment', new_assignment_path(:store => store), :class => 'btn' %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		<% else %>
+		<h2>There are no Stores in the system %></h2></br>
+		<% end %>
+	</div>
+	<div class="well">	
+		<h1>Star Employees</h2>
+		<% if @employees.length != 0 %>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Store</th>
+						<th>Hours Worked (past 2 weeks)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @employees.each do |employee| %>
+						<tr>
+						  <td><%= link_to employee.proper_name, employee_path(employee) %></td>
+						  <td>
+								<% if employee.get_store != nil %>
+									<%= link_to employee.show_store, store_path(employee.get_store) %>
+								<% end %>
+						  </td>
+						  <td><%= employee.hours_worked %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		<% end %>
+	</div>
+</div>
